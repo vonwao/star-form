@@ -1,0 +1,43 @@
+{
+  "name": "root",
+  "private": true,
+  "scripts": {
+    "start:app-ant-design": "yarn workspace @project/app-ant-design-rewired start",
+    "start:app-multi": "yarn workspace @project/app-multi-comps start",
+    "start:app-single": "yarn workspace @project/app-single-comp start",
+    "start:app-ts": "yarn workspace @project/app-typescript start",
+    "start:storybook": "yarn workspace @project/storybook storybook",
+    "start:storybook-ts": "yarn workspace @project/storybook-typescript storybook",
+    "test": "FORCE_COLOR=true lerna run lint && CI=true FORCE_COLOR=true lerna run test -- --coverage",
+    "deploy": "FORCE_COLOR=true lerna run deploy"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*", "example", "website"],
+    "nohoist": [
+      "packages/apps/**/webpack-dev-server",
+      "**/babel-loader",
+      "**/babel-jest"
+    ]
+  },
+  "devDependencies": {
+    "husky": "^4.0.6",
+    "jest-prop-type-error": "^1.1.0",
+    "lerna": "^3.20.2",
+    "prettier": "^1.19.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn test"
+    }
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!src/setupTests.{js,jsx,ts,tsx}",
+      "!src/index.{js,jsx,ts,tsx}",
+      "!src/serviceWorker.{js,jsx,ts,tsx}",
+      "!src/**/*.(spec|test|stories).{js,jsx,ts,tsx}"
+    ]
+  }
+}

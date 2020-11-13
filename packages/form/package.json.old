@@ -1,0 +1,72 @@
+{
+  "name": "@star-js/form",
+  "version": "0.0.2",
+  "description": "Made with create-react-library",
+  "author": "vonwao",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vonwao/form.git"
+  },
+  "main": "dist/index.jsx",
+  "module": "dist/index.modern.js",
+  "source": "src/index.jsx",
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "build": "node_modules/.bin/microbundle-crl --no-compress --format modern,cjs",
+    "start": "node_modules/.bin/microbundle-crl watch --no-compress --format modern,cjs",
+    "prepare": "node_modules/.bin/run-s build",
+    "test": "node_modules/.bin/run-s test:unit test:lint test:build",
+    "test:build": "node_modules/.bin/run-s build",
+    "test:lint": "node_modules/.bin/eslint .",
+    "test:unit": "node_modules/.bin/cross-env CI=1 react-scripts test --env=jsdom",
+    "test:watch": "node_modules/.bin/react-scripts test --env=jsdom",
+    "predeploy": "cd ../../example && yarn install && yarn run build",
+    "deploy": "node_modules/.bin/gh-pages -d ../../example/build",
+    "jest": "node_modules/.bin/jest"
+  },
+  "peerDependencies": {
+
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.3",
+    "cross-env": "^7.0.2",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-config-standard-react": "^9.2.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-standard": "^4.0.1",
+    "gh-pages": "^2.2.0",
+    "microbundle-crl": "^0.13.10",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.1.1",
+    "react-scripts": "^3.4.1"
+  },
+  "files": [
+    "../../dist"
+  ],
+  "bugs": {
+    "url": "https://github.com/vonwao/form/issues"
+  },
+  "homepage": "https://github.com/vonwao/form#readme",
+  "directories": {
+    "example": "../../example"
+  },
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "object-resolve-path": "^1.1.1",
+    "recoil": "0.0.10"
+  },
+  "keywords": [
+    "form",
+    "react"
+  ]
+}
