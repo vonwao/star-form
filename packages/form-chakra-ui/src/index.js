@@ -74,7 +74,7 @@ function ChakraFieldComponent({ field, options, children }) {
 
 function InnerFieldComponent({ field, error, children }) {
   return (
-    <ChakraFormControl isInvalid={!!error}>
+    <ChakraFormControl isInvalid={!!error} my={2}>
       <FormLabel> {field.label || field.name}</FormLabel>
       {children}
       <FormErrorMessage>{error}</FormErrorMessage>
