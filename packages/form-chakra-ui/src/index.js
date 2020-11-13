@@ -7,7 +7,12 @@ import {
   RadioGroup,
   Radio,
   CheckboxGroup,
-  Checkbox
+  Checkbox,
+  FormControl as ChakraFormControl,
+  FormErrorMessage,
+  FormLabel,
+  Stack,
+  VStack,
 } from '@chakra-ui/core'
 import { FormControl } from '@star-js/form'
 
@@ -64,16 +69,21 @@ function ChakraCheckboxGroup({ value, onChange, optionItems }) {
 }
 
 function ChakraFieldComponent({ field, options, children }) {
+  return <FormControl item={field} options={options} />
+}
+
+function InnerFieldComponent({ field, error, children }) {
   return (
-    <Box>
-      <Box fontWeight='medium' my={2}>
-        {/*{requiredMarker}*/}
-        {field.label || field.name}:
-      </Box>
-      {/*{children}*/}
-      <FormControl item={field} options={options} />
-    </Box>
+    <ChakraFormControl isInvalid={!!error}>
+      <FormLabel> {field.label || field.name}</FormLabel>
+      {children}
+      <FormErrorMessage>{error}</FormErrorMessage>
+    </ChakraFormControl>
   )
+}
+
+function FormWrapper({ children }) {
+  return <VStack spacing='10px'> {children}</VStack>
 }
 
 export const ChakraErrorMsg = ({ children }) => {
@@ -86,10 +96,12 @@ export const ChakraDisplayValue = ({ children }) => {
 
 export default {
   field: ChakraFieldComponent,
+  innerField: InnerFieldComponent,
   displayValue: ChakraDisplayValue,
   errorMsg: ChakraErrorMsg,
   input: Input,
   select: ChakraSelectControl,
   radioGroup: ChakraRadioGroup,
-  checkboxGroup: ChakraCheckboxGroup
+  checkboxGroup: ChakraCheckboxGroup,
+  FormWrapper: FormWrapper,
 }

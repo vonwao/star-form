@@ -6,7 +6,7 @@ export const FormControl = ({
   item,
   // value,
   options,
-  onChangeValue
+  onChangeValue,
 }) =>
   // :{
   // item: { name: string; optionsKey?: string; validation?: any };
@@ -28,7 +28,7 @@ export const FormControl = ({
       // @ts-ignore
       setErrors,
       editing,
-      controlMap
+      controlMap,
     } = useFormContext()
 
     const onChangeImpl = (e) => {
@@ -51,7 +51,7 @@ export const FormControl = ({
           : ''
         setErrors({
           ...errors,
-          [item.name]: `${failValidationMsg} ${failRequiredValidationMsg}`
+          [item.name]: `${failValidationMsg} ${failRequiredValidationMsg}`,
         })
         console.log('failed validation')
       } else {
@@ -70,26 +70,27 @@ export const FormControl = ({
     if (!ControlComponent) {
       console.error('no control component found for type: ', item.type)
     }
+    const DefaultInnerField = ({ children }) => <div>{children}</div>
+    const InnerFieldComp = controlMap.innerField || DefaultInnerField
     const ErrorTextComp = controlMap.errorMsg
     const DisplayValueComp = controlMap.displayValue
 
     // console.log('form now', form)
     return editing ? (
-      <div>
+      <InnerFieldComp field={item} error={errors[item.name]}>
         <ControlComponent
           // value={form[item.name] || ''}
           value={form[item.name]}
           onChange={onChangeImpl}
           optionItems={options && options[item.optionsKey]}
         />
-        <ErrorTextComp>{errors[item.name]}</ErrorTextComp>
-      </div>
+      </InnerFieldComp>
     ) : (
       <DisplayValueComp>
         {item.optionsKey // && options && options[item.optionsKey]
           ? options &&
             options[item.optionsKey].find(
-              (opt) => opt.value === form[item.name]
+              (opt) => opt.value === form[item.name],
             )?.label
           : form[item.name]}
       </DisplayValueComp>
