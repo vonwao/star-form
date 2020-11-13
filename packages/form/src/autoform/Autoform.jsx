@@ -1,5 +1,5 @@
-import React from 'react'
-import { useFormContext } from '../core/FormContext'
+import React from "react";
+import { useFormContext } from "../core/FormContext";
 
 // export const getLabel = (item) => {
 //   const words =
@@ -35,17 +35,24 @@ import { useFormContext } from '../core/FormContext'
 // }
 
 function Autoform({ fields: fieldsArg }) {
-  console.log('AutoForm')
-  const { optionsMap, controlMap, fields } = useFormContext()
-  fieldsArg = fieldsArg || fields
+  console.log("AutoForm");
+  const { optionsMap, controlMap, fields } = useFormContext();
+  fieldsArg = fieldsArg || fields;
+  if (!controlMap) {
+    console.error("no control map");
+    return null;
+  } else if (!controlMap.field) {
+    console.error("no field component");
+    return null;
+  }
   return (
     <div>
-      {fieldsArg.map((field) => {
-        const Comp = controlMap.field
-        return <Comp key={field.name} field={field} options={optionsMap} />
+      {fieldsArg.map(field => {
+        const Comp = controlMap.field;
+        return <Comp key={field.name} field={field} options={optionsMap} />;
       })}
     </div>
-  )
+  );
 }
 
-export default Autoform
+export default Autoform;

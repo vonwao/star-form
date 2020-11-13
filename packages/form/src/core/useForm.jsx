@@ -46,9 +46,15 @@ export function useForm({
   const initFormObj = {} //attributeArrayToFormObject(fields)
   console.log('initFormObj', initFormObj)
   const [editing, setEditingState] = React.useState(isEditing)
+  const [conMap, setConMap] = React.useState(controlMap)
   const [form, setForm] = React.useState(initFormObj)
   const [oldForm, setOldForm] = React.useState(initFormObj)
   const [errors, setErrors] = React.useState({})
+
+  useEffect(() => {
+    setConMap(controlMap)
+    setForm({})
+  }, [controlMap])
 
   useEffect(() => {
     console.log('--- useEffect 1 values', values)
@@ -85,7 +91,7 @@ export function useForm({
       oldForm,
       resetForm: () => setForm(oldForm),
       setSingleValue,
-      controlMap,
+      controlMap: conMap,
       optionsMap,
       fields,
     }),

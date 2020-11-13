@@ -1,0 +1,36 @@
+{
+  "name": "@star-js/form-chakra-ui",
+  "version": "0.1.1",
+  "description": "Made with create-react-library",
+  "author": "vonwao",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vonwao/form.git"
+  },
+  "engines": {
+    "node": ">=10"
+  },
+  "main": "src/index.js",
+  "scripts": {
+    "build": "microbundle-crl --no-compress --format modern,cjs",
+    "start": "microbundle-crl watch --no-compress --format modern,cjs"
+  },
+  "peerDependencies": {
+    "@chakra-ui/core": "^1.0.0-rc.8",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.3",
+    "cross-env": "^7.0.2",
+    "gh-pages": "^2.2.0",
+    "microbundle-crl": "^0.13.10",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.1.1"
+  },
+  "dependencies": {
+    "object-resolve-path": "^1.1.1",
+    "recoil": "0.0.10"
+  }
+}
