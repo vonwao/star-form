@@ -1,7 +1,7 @@
 export const fields = [
   {
     name: 'breakfast',
-    label: 'What do you want for breakfast',
+    label: 'What do you want for breakfast?',
     required: true,
   },
   {
@@ -12,7 +12,7 @@ export const fields = [
   },
   {
     name: 'eggCount',
-    label: 'How many eggs?',
+    label: 'How many eggs? (number validation example)',
     validation: 'positive',
   },
   {

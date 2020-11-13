@@ -12,7 +12,7 @@ Install:
 npm i @star-js/form
 ```
 
-## Trivial Use Case:
+## Basic Use Case:
 
 Sample form schema:
 ```javascript

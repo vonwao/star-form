@@ -1,6 +1,6 @@
 module.exports = {
   title: 'Star Form',
-  tagline: 'A powerful way to build forms',
+  tagline: 'A powerful solution for building forms',
   url: 'https://your-docusaurus-test-site.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -9,7 +9,7 @@ module.exports = {
   projectName: 'docusaurus', // Usually your repo name.
   themeConfig: {
     navbar: {
-      title: 'My Site',
+      title: 'Star Form',
       logo: {
         alt: 'My Site Logo',
         src: 'img/logo.svg',
